@@ -1,4 +1,4 @@
-# TelegramServerStatusBot
+# TelegramServerStatusBot | [Final build (Windows)](https://github.com/Zalexanninev15/TelegramServerStatusBot/releases/latest)
 ![](https://github.com/Zalexanninev15/TelegramServerStatusBot/blob/main/logo.png)
 ## Description
 Bot for sending the status of the server (PC) to the Telegram messenger
