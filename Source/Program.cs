@@ -675,7 +675,7 @@
 
 using System;
 using System.Net;
-using System.Diagnostics;
+using System.Threading;
 
 namespace TelegramServerStatusBot
 {
@@ -687,11 +687,12 @@ namespace TelegramServerStatusBot
 			try
 			{
 			    INIManager manager = new INIManager(@System.IO.Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\app.ini");
-			    string[] settings = new string[9];
+			    string[] settings = new string[10];
 			    Console.Title = "Server Status by Zalexanninev15";
-			    Console.WriteLine("TelegramServerStatusBot 1.0.0.1 | GPL-3.0 License\nLoading settings from file app.ini...");
+			    Console.WriteLine("TelegramServerStatusBot 1.1 | GPL-3.0 License\nLoading settings from file app.ini...");
 			    settings[0] = manager.GetPrivateString("App", "SSL");
 			    settings[1] = manager.GetPrivateString("App", "MillisecondsTime");
+			    settings[9] = manager.GetPrivateString("App", "MillisecondsTimeError");
 			    settings[2] = manager.GetPrivateString("Telegram", "BotToken");
 			    settings[3] = manager.GetPrivateString("Telegram", "UserID");
 			    settings[4] = manager.GetPrivateString("PC", "Date");
@@ -730,9 +731,13 @@ namespace TelegramServerStatusBot
                         "?chat_id=" + settings[3] +
                         "&text=" + text);
 			       	  Console.WriteLine("\nStatus has been successfully sent! (" + DateTime.Now.ToString("dd MMMM yyyy") + " " + DateTime.Now.ToString("HH:mm:ss") + ")\nWaiting " + settings[1] + " milliseconds...");
+			       	  Thread.Sleep(Convert.ToInt32(settings[1]));
 			       	}
-			       	catch { Console.WriteLine("\nError sending status! (" + DateTime.Now.ToString("dd MMMM yyyy") + " " + DateTime.Now.ToString("HH:mm:ss") + ")\nAttempt will be repeated in " + settings[1] + " milliseconds..."); }
-			      System.Threading.Thread.Sleep(Convert.ToInt32(settings[1])); 
+			       	catch 
+			       	{ 
+			       		Console.WriteLine("\nError sending status! (" + DateTime.Now.ToString("dd MMMM yyyy") + " " + DateTime.Now.ToString("HH:mm:ss") + ")\nAttempt will be repeated in " + settings[9] + " milliseconds...");
+			       		Thread.Sleep(Convert.ToInt32(settings[9]));
+			       	}
 			    }
 			  }
 			}
