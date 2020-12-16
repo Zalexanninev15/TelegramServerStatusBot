@@ -689,7 +689,7 @@ namespace TelegramServerStatusBot
 			    INIManager manager = new INIManager(@System.IO.Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\app.ini");
 			    string[] settings = new string[9];
 			    Console.Title = "Server Status by Zalexanninev15";
-			    Console.WriteLine("TelegramServerStatusBot 1.0 | GPL-3.0 License\nLoading settings from file app.ini...");
+			    Console.WriteLine("TelegramServerStatusBot 1.0.0.1 | GPL-3.0 License\nLoading settings from file app.ini...");
 			    settings[0] = manager.GetPrivateString("App", "SSL");
 			    settings[1] = manager.GetPrivateString("App", "MillisecondsTime");
 			    settings[2] = manager.GetPrivateString("Telegram", "BotToken");
