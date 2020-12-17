@@ -676,7 +676,6 @@
 using System;
 using System.Net;
 using System.Threading;
-using System.Diagnostics;
 
 namespace TelegramServerStatusBot
 {
@@ -720,7 +719,7 @@ namespace TelegramServerStatusBot
 			       	text += "\nDate: " + DateTime.Now.ToString("dd MMMM yyyy");
 			       if (Convert.ToBoolean(settings[5]) == true)
 			       	text += "\nTime: " + DateTime.Now.ToString("HH:mm:ss");
-				   Console.WriteLine("\nSending the status...");
+				  Console.WriteLine("\nSending the status...");
 			      try
 			       	{
 			       		if (Convert.ToBoolean(settings[0]) == true)
