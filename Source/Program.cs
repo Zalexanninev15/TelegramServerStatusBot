@@ -676,6 +676,7 @@
 using System;
 using System.Net;
 using System.Threading;
+using System.Diagnostics;
 
 namespace TelegramServerStatusBot
 {
@@ -689,10 +690,10 @@ namespace TelegramServerStatusBot
 			    INIManager manager = new INIManager(@System.IO.Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\app.ini");
 			    string[] settings = new string[10];
 			    Console.Title = "Server Status by Zalexanninev15";
-			    Console.WriteLine("TelegramServerStatusBot 1.1 | GPL-3.0 License\nLoading settings from file app.ini...");
+			    Console.WriteLine("TelegramServerStatusBot 1.2 | GPL-3.0 License\nFounder: Zalexanninev15\nGitHub: https://github.com/Zalexanninev15/TelegramServerStatusBot\n\nLoading settings from file app.ini...");
 			    settings[0] = manager.GetPrivateString("App", "SSL");
-			    settings[1] = manager.GetPrivateString("App", "MillisecondsTime");
-			    settings[9] = manager.GetPrivateString("App", "MillisecondsTimeError");
+			    settings[1] = manager.GetPrivateString("App", "WaitMillisecondsTime");
+			    settings[9] = manager.GetPrivateString("App", "WaitMillisecondsTimeError");
 			    settings[2] = manager.GetPrivateString("Telegram", "BotToken");
 			    settings[3] = manager.GetPrivateString("Telegram", "UserID");
 			    settings[4] = manager.GetPrivateString("PC", "Date");
@@ -704,9 +705,10 @@ namespace TelegramServerStatusBot
 			       ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 			    string text, response = "";
 			    using (WebClient c = new WebClient())
-                   {
-			    while (true)
-			    {
+                {
+			       while (true)
+			      {
+				   Console.WriteLine("\nData to send is generate...");
 			       text = "Status PC:";
 			       if (Convert.ToBoolean(settings[6]) == true)
 			       	text += "\nName: " + Dns.GetHostName();
@@ -714,10 +716,11 @@ namespace TelegramServerStatusBot
 			       	try { text += "\nIP: " + Dns.GetHostByName(Dns.GetHostName()).AddressList[0].ToString(); } catch { Console.WriteLine("Error, problem in IP"); }
 			       if (Convert.ToBoolean(settings[8]) == true)
 			       	try { text += "\nPublic IP: " + c.DownloadString("http://api.ipify.org"); } catch { Console.WriteLine("Error, problem in Public IP"); }
-			       if (Convert.ToBoolean(settings[5]) == true)
+			       if (Convert.ToBoolean(settings[4]) == true)
 			       	text += "\nDate: " + DateTime.Now.ToString("dd MMMM yyyy");
 			       if (Convert.ToBoolean(settings[5]) == true)
 			       	text += "\nTime: " + DateTime.Now.ToString("HH:mm:ss");
+				   Console.WriteLine("\nSending the status...");
 			      try
 			       	{
 			       		if (Convert.ToBoolean(settings[0]) == true)
