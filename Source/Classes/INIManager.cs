@@ -674,97 +674,32 @@
 //<https://www.gnu.org/licenses/why-not-lgpl.html>.
 
 using System;
-using System.Net;
-using System.Threading;
-using System.Diagnostics;
-using System.Management;
+using System.Runtime.InteropServices;
+using System.Text;
 
 namespace TelegramServerStatusBot
-{	
-	class Program
-	{	
-		private static ManagementObjectSearcher cpuMonitor = new ManagementObjectSearcher("SELECT LoadPercentage  FROM Win32_Processor");
-		
-		public static void Main(string[] args)
-		{
-			try
-			{
-			    INIManager manager = new INIManager(@System.IO.Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\app.ini");
-			    string[] settings = new string[13];
-			    Console.Title = "Server Status by Zalexanninev15";
-			    Console.WriteLine("TelegramServerStatusBot 1.3 | GPL-3.0 License\nFounder: Zalexanninev15\nGitHub: https://github.com/Zalexanninev15/TelegramServerStatusBot\n\nLoading settings from file app.ini...");
-			   
-			    // Settings
-			    settings[0] = manager.GetPrivateString("App", "SSL");
-			    settings[1] = manager.GetPrivateString("App", "WaitMillisecondsTime");
-			    settings[9] = manager.GetPrivateString("App", "WaitMillisecondsTimeError");
-			    settings[2] = manager.GetPrivateString("Telegram", "BotToken");
-			    settings[3] = manager.GetPrivateString("Telegram", "UserID");
-			    settings[4] = manager.GetPrivateString("PC", "Date");
-			    settings[5] = manager.GetPrivateString("PC", "Time");
-			    settings[6] = manager.GetPrivateString("PC", "Name");
-			    settings[7] = manager.GetPrivateString("PC", "IP");
-			    settings[8] = manager.GetPrivateString("PC", "PublicIP");
-			    settings[12] = manager.GetPrivateString("PC", "CPU%");
-			    settings[10] = manager.GetPrivateString("PC", "MbFreeRAM");
-			    settings[11] = manager.GetPrivateString("PC", "MbBusyRAM");
-			    // ========================================================================
-			    
-			    if (Convert.ToBoolean(settings[0]) == true)
-			       ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-			    string text, response = "";
-			    using (WebClient c = new WebClient())
-                {
-			       while (true)
-			      {
-				   Console.WriteLine("\nData to send is generate...");
-			       text = "Status PC:";
-			       if (Convert.ToBoolean(settings[6]) == true)
-			       	text += "\nName: " + Dns.GetHostName();
-			       if (Convert.ToBoolean(settings[7]) == true)
-			       	try { text += "\nIP: " + Dns.GetHostByName(Dns.GetHostName()).AddressList[0].ToString(); } catch { Console.WriteLine("Error, problem in IP"); }
-			       if (Convert.ToBoolean(settings[8]) == true)
-			       	try { text += "\nPublic IP: " + c.DownloadString("http://api.ipify.org"); } catch { Console.WriteLine("Error, problem in Public IP"); }
-			       if (Convert.ToBoolean(settings[12]) == true)
-			       {
-			       	  foreach (ManagementObject objcpu in cpuMonitor.Get())
-                      {
-                         text += "\nCPU Usage: " + Convert.ToString(objcpu["LoadPercentage"]) + "%";
-                     }
-			       }
-			       if (Convert.ToBoolean(settings[10]) == true)
-			       	text += "\nFree RAM: " + Memory.GetPhysicalAvailableMemoryInMiB() + " Mb";
-			        if (Convert.ToBoolean(settings[11]) == true)
-			       	text += "\nBusy RAM: " + Convert.ToString(Convert.ToInt32(Memory.GetTotalMemoryInMiB())-Convert.ToInt32(Memory.GetPhysicalAvailableMemoryInMiB())) + " Mb";
-			       if (Convert.ToBoolean(settings[4]) == true)
-			       	text += "\nDate: " + DateTime.Now.ToString("dd MMMM yyyy");
-			       if (Convert.ToBoolean(settings[5]) == true)
-			       	text += "\nTime: " + DateTime.Now.ToString("HH:mm:ss");
-				  Console.WriteLine("\nSending the status...");
-			      try
-			       	{
-			       		if (Convert.ToBoolean(settings[0]) == true)
-                          response = c.DownloadString(
-			       			"https://api.telegram.org/bot" + settings[2] + "/sendMessage" +
-                        "?chat_id=" + settings[3] +
-                        "&text=" + text);
-			       		else
-			       		   response = c.DownloadString(
-			       			"http://api.telegram.org/bot" + settings[2] + "/sendMessage" +
-                        "?chat_id=" + settings[3] +
-                        "&text=" + text);
-			       	  Console.WriteLine("\nStatus has been successfully sent! (" + DateTime.Now.ToString("dd MMMM yyyy") + " " + DateTime.Now.ToString("HH:mm:ss") + ")\nWaiting " + settings[1] + " milliseconds...");
-			       	  Thread.Sleep(Convert.ToInt32(settings[1]));
-			       	}
-			       	catch 
-			       	{ 
-			       		Console.WriteLine("\nError sending status! (" + DateTime.Now.ToString("dd MMMM yyyy") + " " + DateTime.Now.ToString("HH:mm:ss") + ")\nAttempt will be repeated in " + settings[9] + " milliseconds...");
-			       		Thread.Sleep(Convert.ToInt32(settings[9]));
-			       	}
-			    }
-			  }
-			}
-			catch { Console.WriteLine("Error, problem in app.ini"); }
-	    }
+{
+	public class INIManager
+{
+    public INIManager(string aPath)
+    {
+        path = aPath;
+    }
+ 
+    public INIManager() : this("") { }
+
+    public string GetPrivateString(string aSection, string aKey)
+    {
+        StringBuilder buffer = new StringBuilder(SIZE);
+        GetPrivateString(aSection, aKey, null, buffer, SIZE, path);
+        return buffer.ToString();
+    }
+ 
+    public string Path { get { return path; } set { path = value; } }
+    private const int SIZE = 1024;
+    private string path = null;
+ 
+    [DllImport("kernel32.dll", EntryPoint = "GetPrivateProfileString")]
+    private static extern int GetPrivateString(string section, string key, string def, StringBuilder buffer, int size, string path);
 	}
 }
