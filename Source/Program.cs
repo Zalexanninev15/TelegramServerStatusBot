@@ -778,11 +778,6 @@ namespace TelegramServerStatusBot
 			  }
 			}
 			catch { Console.WriteLine("\nError, problem in app.ini"); }
-	    }
-		
-//		static void AddProxy() {
-//    var proxy = new WebProxy(proxyip, proxyport);            
-//    request.Proxy = proxy;
-//}
+	    }		
 	}
 }
