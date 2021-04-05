@@ -2,7 +2,7 @@
 
 ![](https://github.com/Zalexanninev15/TelegramServerStatusBot/blob/main/logo.png)
 
-[![](https://img.shields.io/badge/platform-Windows-blue.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader)
+[![](https://img.shields.io/badge/platform-Windows-blue.svg)](https://github.com/Zalexanninev15/TelegramServerStatusBot)
 [![](https://img.shields.io/github/v/release/Zalexanninev15/TelegramServerStatusBot)](https://github.com/Zalexanninev15/TelegramServerStatusBot/releases/latest)
 [![](https://img.shields.io/github/downloads/Zalexanninev15/TelegramServerStatusBot/total.svg)](https://github.com/Zalexanninev15/TelegramServerStatusBot/releases)
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
