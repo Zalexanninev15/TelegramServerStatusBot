@@ -1,19 +1,11 @@
 # TelegramServerStatusBot | [Build (Windows)](https://github.com/Zalexanninev15/TelegramServerStatusBot/releases/latest)
+
 ![](https://github.com/Zalexanninev15/TelegramServerStatusBot/blob/main/logo.png)
 
-<p>
-<a href="https://github.com/Zalexanninev15/TelegramServerStatusBot/releases" target="_blank">
-      <img alt="All releases" src="https://img.shields.io/github/downloads/Zalexanninev15/TelegramServerStatusBot/total.svg?style=for-the-badge&logo=github" />
-    </a>    
-<a href="https://github.com/Zalexanninev15/TelegramServerStatusBot/releases/latest" target="_blank">
-      <img alt="Latest release" src="https://img.shields.io/github/downloads/Zalexanninev15/TelegramServerStatusBot/latest/total.svg?style=for-the-badge&logo=github" />
-    </a>    
-</p>
-<p>
-<a href="https://github.com/Zalexanninev15/TelegramServerStatusBot/blob/master/LICENSE">
-      <img alt="License" src="https://img.shields.io/github/license/Zalexanninev15/TelegramServerStatusBot.svg?style=for-the-badge&logo=github" />
-</a>
-</p>
+[![](https://img.shields.io/badge/platform-Windows-blue.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader)
+[![](https://img.shields.io/github/v/release/Zalexanninev15/TelegramServerStatusBot)](https://github.com/Zalexanninev15/TelegramServerStatusBot/releases/latest)
+[![](https://img.shields.io/github/downloads/Zalexanninev15/TelegramServerStatusBot/total.svg)](https://github.com/Zalexanninev15/TelegramServerStatusBot/releases)
+[![](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## Description
 
