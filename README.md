@@ -2,10 +2,12 @@
 
 ![](https://github.com/Zalexanninev15/TelegramServerStatusBot/blob/main/logo.png)
 
-[![](https://img.shields.io/badge/platform-Windows-blue.svg)](https://github.com/Zalexanninev15/TelegramServerStatusBot)
+[![](https://img.shields.io/badge/OS-Windows-informational?logo=windows)](https://github.com/Zalexanninev15/TelegramServerStatusBot)
 [![](https://img.shields.io/github/v/release/Zalexanninev15/TelegramServerStatusBot)](https://github.com/Zalexanninev15/TelegramServerStatusBot/releases/latest)
 [![](https://img.shields.io/github/downloads/Zalexanninev15/TelegramServerStatusBot/total.svg)](https://github.com/Zalexanninev15/TelegramServerStatusBot/releases)
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![](https://img.shields.io/badge/donate-QIWI-FF8C00.svg)](https://qiwi.com/n/ZALEXANNINEV15)
+[![](https://img.shields.io/badge/donate-YooMoney-8B3FFD.svg)](https://yoomoney.ru/to/410015106319420)
 
 ## Description
 
