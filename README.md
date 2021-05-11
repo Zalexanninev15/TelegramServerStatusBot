@@ -9,6 +9,10 @@
 [![](https://img.shields.io/badge/donate-QIWI-FF8C00.svg)](https://qiwi.com/n/ZALEXANNINEV15)
 [![](https://img.shields.io/badge/donate-YooMoney-8B3FFD.svg)](https://yoomoney.ru/to/410015106319420)
 
+## Screenshot
+
+![](https://github.com/Zalexanninev15/TelegramServerStatusBot/blob/main/screenshot.png?raw=true)
+
 ## Description
 
 Bot for sending the status of the server (PC) to the Telegram messenger
