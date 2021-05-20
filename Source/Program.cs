@@ -1,4 +1,4 @@
-﻿/*                    GNU GENERAL PUBLIC LICENSE
+/*                    GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
  Copyright (C) 2007 Free Software Foundation, Inc. <https:fsf.org/>
@@ -748,12 +748,12 @@ namespace TelegramServerStatusBot
 			       	{
 			       		if (Convert.ToBoolean(settings[0]) == true)
                           response = c.DownloadString(
-			       			"https:api.telegram.org/bot" + settings[2] + "/sendMessage" +
+			       			"https//:api.telegram.org/bot" + settings[2] + "/sendMessage" +
                         "?chat_id=" + settings[3] +
                         "&text=" + text);
 			       		else
 			       		   response = c.DownloadString(
-			       			"http:api.telegram.org/bot" + settings[2] + "/sendMessage" +
+			       			"http://api.telegram.org/bot" + settings[2] + "/sendMessage" +
                         "?chat_id=" + settings[3] +
                         "&text=" + text);
 			       	  Console.WriteLine("\nStatus has been successfully sent! (" + DateTime.Now.ToString("dd MMMM yyyy") + " " + DateTime.Now.ToString("HH:mm:ss") + ")\nWaiting " + settings[1] + " milliseconds...");
