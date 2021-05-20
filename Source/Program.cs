@@ -748,7 +748,7 @@ namespace TelegramServerStatusBot
 			       	{
 			       		if (Convert.ToBoolean(settings[0]) == true)
                           response = c.DownloadString(
-			       			"https//:api.telegram.org/bot" + settings[2] + "/sendMessage" +
+			       			"https://api.telegram.org/bot" + settings[2] + "/sendMessage" +
                         "?chat_id=" + settings[3] +
                         "&text=" + text);
 			       		else
