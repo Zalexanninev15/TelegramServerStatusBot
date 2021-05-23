@@ -696,7 +696,7 @@ namespace TelegramServerStatusBot
 		        settings[16] = ini_value.GetValue("App", "ShowTelegramInfo");	 
 				settings[2] = ini_value.GetValue("Telegram", "BotToken");
 				settings[3] = ini_value.GetValue("Telegram", "UserID");
-				if (Convert.ToBoolean(settings[16]) == true) { Console.WriteLine("\nToken: " + settings[2] + "\nUserID: " + settings[3] + "\n"); }
+				if (Convert.ToBoolean(settings[16]) == true) { Console.WriteLine("\nToken: " + settings[2] + "\nUserID: " + settings[3]); }
 				settings[0] = ini_value.GetValue("App", "SSL");
 			    settings[13] = ini_value.GetValue("App", "Proxy");
 			    settings[1] = ini_value.GetValue("App", "WaitMillisecondsTime");
