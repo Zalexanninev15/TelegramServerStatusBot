@@ -1,4 +1,4 @@
-# TelegramServerStatusBot |[Latest release](https://github.com/Zalexanninev15/TelegramServerStatusBot/releases/latest)
+# TelegramServerStatusBot | [Latest release](https://github.com/Zalexanninev15/TelegramServerStatusBot/releases/latest)
 
 ![](https://github.com/Zalexanninev15/TelegramServerStatusBot/blob/main/logo.png)
 
