@@ -722,7 +722,7 @@ namespace TelegramServerStatusBot
                     while (true)
                     {
                         Console.WriteLine("\nData to send is generate...");
-                        text = "Status PC:";
+                        text = "PC Status:";
                         if (Convert.ToBoolean(settings[6]) == true) { text += "\nName: " + Dns.GetHostName(); }
                         if (Convert.ToBoolean(settings[7]) == true) { try { text += "\nIP: " + Dns.GetHostByName(Dns.GetHostName()).AddressList[0].ToString(); } catch { Console.WriteLine("\nError, problem in IP"); } }
                         if (Convert.ToBoolean(settings[8]) == true) { try { text += "\nPublic IP: " + c.DownloadString("https://icanhazip.com"); } catch { Console.WriteLine("\nError, problem in Public IP"); } }
