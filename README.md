@@ -32,4 +32,4 @@ The application is configured by creating an **app.ini** file near the executabl
 
 ## Build
 
-Compile using [SharpDevelop](https://sourceforge.net/projects/sharpdevelop/)
+Compile using [SharpDevelop](https://sourceforge.net/projects/sharpdevelop) or [Visual Studio](https://visualstudio.microsoft.com/vs)
