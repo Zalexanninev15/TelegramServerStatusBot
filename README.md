@@ -20,7 +20,7 @@ Bot for sending the status of the server (PC) to the Telegram messenger
 
 ## System requirements
 * **OS:** Windows 7 or higher
-* **Additional:** .NET Framework 4.5
+* **Additional:** .NET Framework 4.5 or higher
 
 ## Features
 
