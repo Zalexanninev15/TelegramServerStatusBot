@@ -41,8 +41,17 @@
     <Reference Include="System.Management" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSettings\AppInfo.cs" />
+    <Compile Include="AppSettings\Helper\AppSettingRepo.cs" />
+    <Compile Include="AppSettings\Loader\IniFileSettingsLoader.cs" />
+    <Compile Include="AppSettings\Loader\ISettingLoader.cs" />
+    <Compile Include="AppSettings\PCInfo.cs" />
+    <Compile Include="AppSettings\ProxyInfo.cs" />
+    <Compile Include="AppSettings\TelegramInfo.cs" />
     <Compile Include="Classes\CfgLoader.cs" />
     <Compile Include="Classes\Memory.cs" />
+    <Compile Include="Exceptions\ConvertValueTypeExcepions.cs" />
+    <Compile Include="Exceptions\IniFileNotFoundException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
