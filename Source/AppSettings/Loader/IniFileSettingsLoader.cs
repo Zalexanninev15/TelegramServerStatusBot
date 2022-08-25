@@ -7,21 +7,22 @@ namespace TelegramServerStatusBot.AppSettings.Loader
 {
     internal sealed class IniFileSettingsLoader : ISettingLoader
     {
-        public string FilePath { get; private set; }
+        private readonly string _filePath;
 
         private const int SIZE = 1024;
         private static IniFileSettingsLoader instance = null;
 
-        private IniFileSettingsLoader(string fileName)
+        private IniFileSettingsLoader()
         {
-            FilePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\{fileName}";
+            string fileName = "app.ini";
+            _filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\\{fileName}";
         }
 
-        public static IniFileSettingsLoader GetInstance(string fileName)
+        public static IniFileSettingsLoader GetInstance()
         {
             if (instance == null)
             {
-                instance = new IniFileSettingsLoader(fileName);
+                instance = new IniFileSettingsLoader();
             }
             return instance;
         }
@@ -29,7 +30,7 @@ namespace TelegramServerStatusBot.AppSettings.Loader
         public string GetValue(string aSection, string aKey)
         {
             StringBuilder buffer = new StringBuilder(SIZE);
-            GetPrivateProfileString(aSection, aKey, null, buffer, SIZE, FilePath);
+            GetPrivateProfileString(aSection, aKey, null, buffer, SIZE, _filePath);
             return buffer.ToString();
         }
 

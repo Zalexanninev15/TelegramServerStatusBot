@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="AppSettings\AppInfo.cs" />
     <Compile Include="AppSettings\Helper\AppSettingRepo.cs" />
+    <Compile Include="AppSettings\Helper\GenerateMessage.cs" />
+    <Compile Include="AppSettings\Helper\SentServerStatusToTelegramBot.cs" />
     <Compile Include="AppSettings\Loader\IniFileSettingsLoader.cs" />
     <Compile Include="AppSettings\Loader\ISettingLoader.cs" />
     <Compile Include="AppSettings\PCInfo.cs" />

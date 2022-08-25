@@ -8,7 +8,6 @@ namespace TelegramServerStatusBot.AppSettings.Loader
 {
     internal interface ISettingLoader
     {
-        string FilePath { get; }
         string GetValue(string aSection, string aKey);
     }
 }
