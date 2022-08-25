@@ -674,8 +674,11 @@
 //<https://www.gnu.org/licenses/why-not-lgpl.html>.
 
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using TelegramServerStatusBot.Exceptions;
 
 namespace TelegramServerStatusBot
 {
@@ -686,6 +689,8 @@ namespace TelegramServerStatusBot
 
         public CfgLoader(string filePath)
         {
+            if (!File.Exists(filePath))
+                throw new IniFileNotFoundException("The ini files not found");
             FilePath = filePath;
         }
 
