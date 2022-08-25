@@ -685,87 +685,14 @@ namespace TelegramServerStatusBot
 {
     class Program
     {
-        private static ManagementObjectSearcher cpuMonitor = new ManagementObjectSearcher("SELECT LoadPercentage  FROM Win32_Processor");
-
         public static void Main(string[] args)
         {
-            string fileSettingName = "app.ini";
             Console.Title = "TelegramServerStatusBot";
             Console.WriteLine("TelegramServerStatusBot 1.4 (by Zalexanninev15) | GPL-3.0 License\nFounder: Zalexanninev15\nGitHub: https:github.com/Zalexanninev15/TelegramServerStatusBot\n\nLoading settings from file app.ini...");
             try
             {
-                AppInfo appInfo = AppSettingRepo.GetAppSetting(fileSettingName);
-                if (appInfo.ShowTelegramInfo)
-                {
-                    Console.WriteLine($"Token: {appInfo.TelegramInfo.BotToken}");
-                    Console.WriteLine($"UserID: {appInfo.TelegramInfo.UserID}");
-                }
-                if(appInfo.SSl)
-                {
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-                }
-                string text, response = "";
-                using (WebClient c = new WebClient())
-                {
-                    if (appInfo.Proxy)
-                    {
-                        try { 
-                            var sproxy = new WebProxy(appInfo.ProxyInfo.IP, appInfo.ProxyInfo.Port);
-                            c.Proxy = sproxy; 
-                        }
-                        catch { 
-                            Console.WriteLine("\nError, problem in Proxy"); 
-                        }
-                    }
-                    while (true)
-                    {
-                        Console.WriteLine("\nData to send is generate...");
-                        text = "PC Status:";
-                        if (appInfo.PCInfo.Name) { 
-                            text += "\nName: " + Dns.GetHostName(); 
-                        }
-                        if (appInfo.PCInfo.IP) { 
-                            try { text += "\nIP: " + Dns.GetHostByName(Dns.GetHostName()).AddressList[0].ToString(); } catch { Console.WriteLine("\nError, problem in IP"); } 
-                        }
-                        if (appInfo.PCInfo.PublicIP) { 
-                            try { text += "\nPublic IP: " + c.DownloadString("https://icanhazip.com"); } catch { Console.WriteLine("\nError, problem in Public IP"); }
-                        }
-                        if (appInfo.PCInfo.CPU)
-                        {
-                            int cpus = 0;
-                            foreach (ManagementObject objcpu in cpuMonitor.Get()) { text += "CPU" + cpus + " Usage: " + Convert.ToString(objcpu["LoadPercentage"]) + "%"; cpus = cpus + 1; }
-                        }
-                        if (appInfo.PCInfo.MbFreeRAM) { 
-                            text += "\nFree RAM: " + Memory.GetPhysicalAvailableMemoryInMiB() + " Mb"; 
-                        }
-                        if (appInfo.PCInfo.MbBusyRAM) {
-                            text += "\nBusy RAM: " + Convert.ToString(Convert.ToInt32(Memory.GetTotalMemoryInMiB()) - Convert.ToInt32(Memory.GetPhysicalAvailableMemoryInMiB())) + " Mb"; 
-                        }
-                        if (appInfo.PCInfo.Date) { 
-                            text += "\nDate: " + DateTime.Now.ToString("dd MMMM yyyy");
-                        }
-                        if (appInfo.PCInfo.Time) {
-                            text += "\nTime: " + DateTime.Now.ToString("HH:mm:ss");
-                        }
-                        Console.WriteLine("\nSending status...");
-                        try
-                        {
-                            if (appInfo.SSl) { 
-                                response = c.DownloadString("https://api.telegram.org/bot" + appInfo.TelegramInfo.BotToken + "/sendMessage" + "?chat_id=" + appInfo.TelegramInfo.UserID + "&text=" + text); 
-                            }
-                            else { 
-                                response = c.DownloadString("http://api.telegram.org/bot" + appInfo.TelegramInfo.BotToken + "/sendMessage" + "?chat_id=" + appInfo.TelegramInfo.UserID + "&text=" + text);
-                            }
-                            Console.WriteLine("\nStatus has been successfully sent! (" + DateTime.Now.ToString("dd MMMM yyyy") + " " + DateTime.Now.ToString("HH:mm:ss") + ")\nWaiting " + appInfo.WaitMillisecondsTime + " milliseconds...");
-                            Thread.Sleep(appInfo.WaitMillisecondsTime);
-                        }
-                        catch
-                        {
-                            Console.WriteLine("\nError sending status! (" + DateTime.Now.ToString("dd MMMM yyyy") + " " + DateTime.Now.ToString("HH:mm:ss") + ")\nAttempt will be repeated in " + appInfo.WaitMillisecondsTimeError + " milliseconds...");
-                            Thread.Sleep(appInfo.WaitMillisecondsTimeError);
-                        }
-                    }
-                }
+                AppInfo appInfo = AppSettingRepo.GetAppSetting();
+                SentServerStatusToTelegramBot.SentStatus(appInfo);
             }
             catch (Exception ex) { 
                 Console.WriteLine($"{ex.GetType().ToString()}: say {ex.Message}");
