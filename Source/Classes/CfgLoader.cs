@@ -680,26 +680,25 @@ using System.Text;
 namespace TelegramServerStatusBot
 {
 	public class CfgLoader
-{
-    public CfgLoader(string aPath)
     {
-        path = aPath;
-    }
- 
-    public CfgLoader() : this("") { }
+        public string FilePath { get; private set; }
+        private const int SIZE = 1024;
 
-    public string GetValue(string aSection, string aKey)
-    {
-        StringBuilder buffer = new StringBuilder(SIZE);
-        GetValue(aSection, aKey, null, buffer, SIZE, path);
-        return buffer.ToString();
-    }
+        public CfgLoader(string filePath)
+        {
+            FilePath = filePath;
+        }
+
+        public CfgLoader() : this("") { }
+
+        public string GetValue(string aSection, string aKey)
+        {
+            StringBuilder buffer = new StringBuilder(SIZE);
+            GetValue(aSection, aKey, null, buffer, SIZE, FilePath);
+            return buffer.ToString();
+        }
  
-    public string Path { get { return path; } set { path = value; } }
-    private const int SIZE = 1024;
-    private string path = null;
- 
-    [DllImport("kernel32.dll", EntryPoint = "GetPrivateProfileString")]
-    private static extern int GetValue(string section, string key, string def, StringBuilder buffer, int size, string path);
+        [DllImport("kernel32.dll", EntryPoint = "GetPrivateProfileString")]
+        private static extern int GetValue(string section, string key, string def, StringBuilder buffer, int size, string path);
 	}
 }
