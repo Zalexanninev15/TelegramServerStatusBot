@@ -13,9 +13,9 @@ namespace TelegramServerStatusBot.AppSettings.Helper
     public static class AppSettingRepo
     {
         private static IniFileSettingsLoader loader;
-        public static AppInfo GetAppSetting(string fileName)
+        public static AppInfo GetAppSetting()
         {
-            loader = IniFileSettingsLoader.GetInstance(fileName);
+            loader = IniFileSettingsLoader.GetInstance();
 
             AppInfo appInfo = new AppInfo()
             {
@@ -39,11 +39,11 @@ namespace TelegramServerStatusBot.AppSettings.Helper
                     IP = GetStringValue("Proxy", "IP"),
                     Port = GetIntValue("Proxy", "Port")
                 } : null,
-                TelegramInfo = GetBoolValue("App", "TelegramInfo") ? new TelegramInfo()
+                TelegramInfo = new TelegramInfo()
                 {
                     BotToken = GetStringValue("Telegram", "BotToken"),
                     UserID = GetStringValue("Telegram", "UserID")
-                } : null
+                }
             };
 
             return appInfo;
