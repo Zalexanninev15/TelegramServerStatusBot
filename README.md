@@ -8,6 +8,7 @@
 [![](https://img.shields.io/github/v/release/Zalexanninev15/TelegramServerStatusBot)](https://github.com/Zalexanninev15/TelegramServerStatusBot/releases/latest)
 [![](https://img.shields.io/github/downloads/Zalexanninev15/TelegramServerStatusBot/total.svg)](https://github.com/Zalexanninev15/TelegramServerStatusBot/releases)
 [![](https://img.shields.io/github/last-commit/Zalexanninev15/TelegramServerStatusBot)](https://github.com/Zalexanninev15/TelegramServerStatusBot/commits/main)
+[![](https://img.shields.io/github/stars/Zalexanninev15/TelegramServerStatusBot.svg)](https://github.com/Zalexanninev15/TelegramServerStatusBot/stargazers)
 [![](https://img.shields.io/badge/license-GPLv3-ligthgreen.svg)](LICENSE)
 [![](https://img.shields.io/badge/donate-Buy_Me_a_Coffee-F94400.svg)](https://zalexanninev15.jimdofree.com/buy-me-a-coffee)
 
