@@ -3,7 +3,7 @@
 ![](https://github.com/Zalexanninev15/TelegramServerStatusBot/blob/main/logo.png)
 
 [![](https://img.shields.io/badge/OS-Windows-informational?logo=windows)](https://github.com/Zalexanninev15/TelegramServerStatusBot)
-[![](https://img.shields.io/badge/written_on-.NET_Framework_4.5-512BD4.svg?logo=dotnet)](https://dotnet.microsoft.com/download/dotnet-framework/net45)
+[![](https://img.shields.io/badge/written_on-.NET_Framework_4.8-512BD4.svg?logo=dotnet)](https://dotnet.microsoft.com/download/dotnet-framework/net48)
 [![](https://img.shields.io/badge/written_on-CSharp-239120.svg?logo=csharp)](https://github.com/Zalexanninev15/TelegramServerStatusBot)
 [![](https://img.shields.io/github/v/release/Zalexanninev15/TelegramServerStatusBot)](https://github.com/Zalexanninev15/TelegramServerStatusBot/releases/latest)
 [![](https://img.shields.io/github/downloads/Zalexanninev15/TelegramServerStatusBot/total.svg)](https://github.com/Zalexanninev15/TelegramServerStatusBot/releases)
@@ -22,15 +22,16 @@ Bot for sending the status of the server (PC) to the Telegram messenger
 ## Features
 
 * Easy setup
+* There are a number of interesting settings
 * Optimized for use on servers
 
 ## System requirements
 * **OS:** Windows 7 or higher
-* **Additional:** .NET Framework 4.5 or higher
+* **Additional:** .NET Framework 4.8
 
 ## Configuration
 
-The application is configured by creating an **app.ini** file near the executable file. For an example of such a file, see [here](https://github.com/Zalexanninev15/TelegramServerStatusBot/blob/main/app.ini)
+The application is configured by creating an `app.ini` file near the executable file. For an example of such a file, see [here](https://github.com/Zalexanninev15/TelegramServerStatusBot/blob/main/app.ini)
 
 ## Build
 
