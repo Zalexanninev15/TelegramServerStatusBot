@@ -685,7 +685,11 @@ namespace TelegramServerStatusBot
         public static void Main(string[] args)
         {
             Console.Title = "TelegramServerStatusBot";
-            Console.WriteLine("TelegramServerStatusBot 1.4 (by Zalexanninev15) | GPL-3.0 License\nFounder: Zalexanninev15\nGitHub: https:github.com/Zalexanninev15/TelegramServerStatusBot\n\nLoading settings from file app.ini...");
+            Console.WriteLine("TelegramServerStatusBot 1.4.1\n" +
+                "License: GPL-3.0 License\n" +
+                "Developers: Zalexanninev15 & ali-tamim\n" +
+                "GitHub: https:github.com/Zalexanninev15/TelegramServerStatusBot" +
+                "\n\nLoading settings from file app.ini...");
             try
             {
                 AppInfo appInfo = AppSettingRepo.GetAppSetting();
@@ -693,7 +697,7 @@ namespace TelegramServerStatusBot
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"{ex.GetType().ToString()}: say {ex.Message}");
+                Console.WriteLine($"{ex.GetType()}: say {ex.Message}");
                 Console.ReadLine();
             }
         }
