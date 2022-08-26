@@ -673,16 +673,15 @@
 //Public License instead of this License.  But first, please read
 //<https://www.gnu.org/licenses/why-not-lgpl.html>.
 
-using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+
 using TelegramServerStatusBot.Exceptions;
 
 namespace TelegramServerStatusBot
 {
-	public class CfgLoader
+    public class CfgLoader
     {
         public string FilePath { get; private set; }
         private const int SIZE = 1024;
@@ -694,7 +693,9 @@ namespace TelegramServerStatusBot
             FilePath = filePath;
         }
 
-        public CfgLoader() : this("") { }
+        public CfgLoader() : this("")
+        {
+        }
 
         public string GetValue(string aSection, string aKey)
         {
@@ -702,8 +703,8 @@ namespace TelegramServerStatusBot
             GetValue(aSection, aKey, null, buffer, SIZE, FilePath);
             return buffer.ToString();
         }
- 
+
         [DllImport("kernel32.dll", EntryPoint = "GetPrivateProfileString")]
         private static extern int GetValue(string section, string key, string def, StringBuilder buffer, int size, string path);
-	}
+    }
 }
