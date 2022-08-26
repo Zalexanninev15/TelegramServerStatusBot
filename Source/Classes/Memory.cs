@@ -678,15 +678,15 @@ using System.Runtime.InteropServices;
 
 namespace TelegramServerStatusBot
 {
-	/// <summary>
-	/// Description of Memory.
-	/// </summary>
-	public static class Memory
+    /// <summary>
+    /// Description of Memory.
+    /// </summary>
+    public static class Memory
     {
         [DllImport("psapi.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetPerformanceInfo([Out] out PerformanceInformation PerformanceInformation, [In] int Size);
- 
+
         [StructLayout(LayoutKind.Sequential)]
         public struct PerformanceInformation
         {
@@ -705,7 +705,7 @@ namespace TelegramServerStatusBot
             public int ProcessCount;
             public int ThreadCount;
         }
- 
+
         public static Int64 GetPhysicalAvailableMemoryInMiB()
         {
             PerformanceInformation pi = new PerformanceInformation();
@@ -717,9 +717,8 @@ namespace TelegramServerStatusBot
             {
                 return -1;
             }
- 
         }
- 
+
         public static Int64 GetTotalMemoryInMiB()
         {
             PerformanceInformation pi = new PerformanceInformation();
@@ -731,7 +730,6 @@ namespace TelegramServerStatusBot
             {
                 return -1;
             }
- 
         }
     }
 }

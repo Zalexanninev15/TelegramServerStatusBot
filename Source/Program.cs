@@ -674,16 +674,13 @@ Public License instead of this License.  But first, please read
 <https:www.gnu.org/licenses/why-not-lgpl.html>.*/
 
 using System;
-using System.Net;
-using System.Threading;
-using System.Management;
+
 using TelegramServerStatusBot.AppSettings;
 using TelegramServerStatusBot.AppSettings.Helper;
-using TelegramServerStatusBot.AppSettings.Loader;
 
 namespace TelegramServerStatusBot
 {
-    class Program
+    internal class Program
     {
         public static void Main(string[] args)
         {
@@ -694,7 +691,8 @@ namespace TelegramServerStatusBot
                 AppInfo appInfo = AppSettingRepo.GetAppSetting();
                 SentServerStatusToTelegramBot.SentStatus(appInfo);
             }
-            catch (Exception ex) { 
+            catch (Exception ex)
+            {
                 Console.WriteLine($"{ex.GetType().ToString()}: say {ex.Message}");
                 Console.ReadLine();
             }
